@@ -1,0 +1,16 @@
+require("plugins.lazy")
+require("core.options")
+require("core.keymaps")
+
+-- 插件
+require("plugins.lualine")
+--require("plugins/nvim-tree")
+require("plugins/treesitter")
+require("plugins/lsp")
+require("plugins/cmp")
+----require("plugins/bufferline")
+require("plugins/gitsigns")
+require("plugins/telescope")
+require("plugins/noice")
+require("plugins/oil")
+--require("plugins/hardtime")
