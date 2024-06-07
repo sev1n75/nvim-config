@@ -45,7 +45,7 @@ return {
     require("mason-lspconfig").setup({
       ensure_installed = {
         "lua_ls",
-        "clangd",
+        --"clangd",
         "pyright",
         "marksman",
       },
@@ -57,6 +57,8 @@ return {
         end,
       },
     })
+
+    require("lspconfig").clangd.setup{}
 
     local cmp_action = require("lsp-zero").cmp_action()
     local cmp = require("cmp")
