@@ -23,4 +23,7 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 keymap.set("n", "<leader>x", ":bdelete<CR>")
 
 -- noice-nvim
-keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", {desc="Dismiss Noice Message"})
+keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Message" })
+
+-- oil
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
