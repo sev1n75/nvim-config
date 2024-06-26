@@ -16,8 +16,6 @@ keymap.set("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
 keymap.set("n", "<leader>nh", "<cmd>nohl<CR>")
 
 -- ----------------插件----------------------- --
-keymap.set("n", "<leader>l", "<cmd>tabnext<CR>")
-keymap.set("n", "<leader>h", "<cmd>tabprevious<CR>")
 keymap.set("n", "<leader>x", ":bdelete<CR>")
 
 -- noice-nvim
