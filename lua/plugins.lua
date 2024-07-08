@@ -10,13 +10,15 @@ return {
 
   {
     --'shaunsingh/nord.nvim',
-    "Mofiqul/dracula.nvim",
+    --"Mofiqul/dracula.nvim",
+    "rebelot/kanagawa.nvim",
     lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
       --vim.cmd([[colorscheme nord]])
-      vim.cmd([[colorscheme dracula]])
+      --vim.cmd([[colorscheme dracula]])
+      vim.cmd([[colorscheme kanagawa]])
     end,
   },
 
@@ -105,10 +107,10 @@ return {
     opts = {},
     -- stylua: ignore
     keys = {
-      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-      { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<leader>d",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+      { "<leader>D",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+      { "<leader>r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+      { "<leader>R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
       { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
   },
