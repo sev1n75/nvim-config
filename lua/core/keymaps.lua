@@ -15,11 +15,7 @@ keymap.set("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
 -- 取消高亮
 keymap.set("n", "<leader>nh", "<cmd>nohl<CR>")
 
--- ----------------插件----------------------- --
-keymap.set("n", "<leader>x", ":bdelete<CR>")
+keymap.set("n", "<leader>x", "<cmd>bdelete<CR>")
 
--- noice-nvim
-keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Message" })
-
--- oil
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+-- clear jumplists
+keymap.set("n", "<leader>cl", "<cmd>clearjumps<CR>")
