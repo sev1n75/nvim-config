@@ -11,14 +11,15 @@ return {
   {
     --'shaunsingh/nord.nvim',
     --"Mofiqul/dracula.nvim",
-    "rebelot/kanagawa.nvim",
+    --"rebelot/kanagawa.nvim",
+    "folke/tokyonight.nvim",
     lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
       --vim.cmd([[colorscheme nord]])
       --vim.cmd([[colorscheme dracula]])
-      vim.cmd([[colorscheme kanagawa]])
+      vim.cmd([[colorscheme tokyonight]])
     end,
   },
 
@@ -57,17 +58,6 @@ return {
   },
 
   {
-    'm4xshen/hardtime.nvim',
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim", -- optional
-    },
-    config = function()
-      require('hardtime').setup()
-    end,
-  },
-
-  {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
@@ -85,6 +75,10 @@ return {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
+    config = function()
+      -- noice-nvim
+      vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Message" })
+    end
   },
 
   {
@@ -97,6 +91,7 @@ return {
         delete_to_trash = true,
         skip_confirm_for_simple_edits = true,
       })
+      vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
     end,
   },
 
@@ -107,11 +102,11 @@ return {
     opts = {},
     -- stylua: ignore
     keys = {
-      { "<leader>d",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-      { "<leader>D",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-      { "<leader>r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-      { "<leader>R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+      { "<leader>d", mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+      { "<leader>D", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+      { "<leader>r", mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+      { "<leader>R", mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>",     mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
   },
   {
@@ -122,12 +117,9 @@ return {
 
       conform.setup({
         formatters_by_ft = {
-          lua = { "stylua" },
           markdown = { "mdformat" },
-          sh = { { "shellcheck" } },
           python = { "isort", "black" },
-          c = { "clang-format" },
-
+          rust = { "rustfmt" },
         },
       })
 
@@ -139,5 +131,17 @@ return {
         })
       end, { desc = "Format file or range (in visual mode)" })
     end,
+  },
+  {
+    "folke/zen-mode.nvim",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "Close all folds" }),
+      plugins = {
+        tmux = { enabled = true }, -- disables the tmux statusline
+      }
+    },
   },
 }
