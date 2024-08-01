@@ -66,6 +66,7 @@ return {
           filter = { event = "notify", find = "No information available" },
           opts = { skip = true },
         },
+      vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Message" })
       },
       presets = {
         lsp_doc_border = true,
@@ -75,10 +76,6 @@ return {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
-    config = function()
-      -- noice-nvim
-      vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Message" })
-    end
   },
 
   {
@@ -138,7 +135,7 @@ return {
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
-      vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "Close all folds" }),
+      vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "toggle zen-mode" }),
       plugins = {
         tmux = { enabled = true }, -- disables the tmux statusline
       }
