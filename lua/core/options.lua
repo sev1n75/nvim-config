@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- 光标行
-opt.cursorline = true
+--opt.cursorline = true
 vim.api.nvim_set_hl(0, 'CursorLine', { underline = true })
 
 -- 光标滚动
@@ -48,3 +48,6 @@ opt.clipboard:append("unnamedplus")
 -- 搜索
 opt.ignorecase = true
 opt.smartcase = true
+
+-- jumplist
+opt.jumpoptions = "stack"

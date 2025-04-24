@@ -53,29 +53,9 @@ return {
           topdelete = { text = '‾' },
           changedelete = { text = '~' },
         },
+        current_line_blame = true,
       }
     end,
-  },
-
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      routes = {
-        {
-          filter = { event = "notify", find = "No information available" },
-          opts = { skip = true },
-        },
-      vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Message" })
-      },
-      presets = {
-        lsp_doc_border = true,
-      },
-    },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    },
   },
 
   {
@@ -128,17 +108,5 @@ return {
         })
       end, { desc = "Format file or range (in visual mode)" })
     end,
-  },
-  {
-    "folke/zen-mode.nvim",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-      vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "toggle zen-mode" }),
-      plugins = {
-        tmux = { enabled = true }, -- disables the tmux statusline
-      }
-    },
   },
 }
