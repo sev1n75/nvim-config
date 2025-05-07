@@ -12,14 +12,20 @@ return {
     --'shaunsingh/nord.nvim',
     --"Mofiqul/dracula.nvim",
     --"rebelot/kanagawa.nvim",
-    "folke/tokyonight.nvim",
+    --"folke/tokyonight.nvim",
+    "catppuccin/nvim",
+    name = "catppuccin",
     lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
       --vim.cmd([[colorscheme nord]])
       --vim.cmd([[colorscheme dracula]])
-      vim.cmd([[colorscheme tokyonight]])
+      --vim.cmd([[colorscheme tokyonight]])
+      require("catppuccin").setup {
+        transparent_background = true,
+      }
+      vim.cmd([[colorscheme catppuccin]])
     end,
   },
 
@@ -54,6 +60,8 @@ return {
           changedelete = { text = '~' },
         },
         current_line_blame = true,
+        numhl = false,
+        linehl = false,
       }
     end,
   },
@@ -97,6 +105,7 @@ return {
           markdown = { "mdformat" },
           python = { "isort", "black" },
           rust = { "rustfmt" },
+          latex = { "tex-fmt" },
         },
       })
 
@@ -109,28 +118,4 @@ return {
       end, { desc = "Format file or range (in visual mode)" })
     end,
   },
-  {
-    "xiyaowong/transparent.nvim",
-    lazy = false,
-    config = function()
-      -- Optional, you don't have to run setup.
-      require("transparent").setup({
-        -- table: default groups
-        groups = {
-          'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
-          'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
-          'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
-          'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
-          'EndOfBuffer',
-        },
-        -- table: additional groups that should be cleared
-        extra_groups = {},
-        -- table: groups you don't want to clear
-        exclude_groups = {},
-        -- function: code to be executed after highlight groups are cleared
-        -- Also the user event "TransparentClear" will be triggered
-        on_clear = function() end,
-      })
-    end
-  }
 }

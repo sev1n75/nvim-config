@@ -13,7 +13,17 @@ return {
       enabled = true,
       timeout = 3000,
     },
-    picker = { enabled = true },
+    picker = {
+      win = {
+        -- input window
+        input = {
+          keys = {
+            ["J"] = { "preview_scroll_down", mode = { "n" } },
+            ["K"] = { "preview_scroll_up", mode = { "n" } },
+          },
+        },
+      }
+    },
     quickfile = { enabled = true },
     scope = { enabled = true },
     --scroll = { enabled = true },
@@ -23,50 +33,60 @@ return {
       notification = {
         -- wo = { wrap = true } -- Wrap notifications
       }
+    },
+    zen = {
+      -- You can add any `Snacks.toggle` id here.
+      -- Toggle state is restored when the window is closed.
+      -- Toggle config options are NOT merged.
+      ---@type table<string, boolean>
+      toggles = {
+        dim = false,
+        diagnostics = false,
+      },
     }
   },
   keys = {
     -- Top Pickers
-    { "<leader>:",       function() Snacks.picker.command_history() end,                         desc = "Command History" },
-    { "<leader>nH",      function() Snacks.picker.notifications() end,                           desc = "Notification History" },
+    { "<leader>:",  function() Snacks.picker.command_history() end,                         desc = "Command History" },
+    { "<leader>nH", function() Snacks.picker.notifications() end,                           desc = "Notification History" },
     -- find
-    { "<leader>fb",      function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
-    { "<leader>fc",      function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
-    { "<leader>ff",      function() Snacks.picker.files() end,                                   desc = "Find Files" },
-    { "<leader>fg",      function() Snacks.picker.grep() end,                                    desc = "Grep" },
-    { "<leader>fh",      function() Snacks.picker.help() end,                                    desc = "Help Pages" },
-    { "<leader>fw",      function() Snacks.picker.grep_word() end,                               desc = "Visual selection or word", mode = { "n", "x" } },
+    { "<leader>fb", function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
+    { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
+    { "<leader>ff", function() Snacks.picker.files() end,                                   desc = "Find Files" },
+    { "<leader>fg", function() Snacks.picker.grep() end,                                    desc = "Grep" },
+    { "<leader>fh", function() Snacks.picker.help() end,                                    desc = "Help Pages" },
+    { "<leader>fw", function() Snacks.picker.grep_word() end,                               desc = "Visual selection or word", mode = { "n", "x" } },
     -- { "<leader>fp",      function() Snacks.picker.projects() end,                                desc = "Projects" },
     -- search
-    { "<leader>sb",      function() Snacks.picker.grep_buffers() end,                            desc = "Grep Open Buffers" },
-    { "<leader>sc",      function() Snacks.picker.command_history() end,                         desc = "Command History" },
-    { "<leader>sd",      function() Snacks.picker.diagnostics() end,                             desc = "Diagnostics" },
-    { "<leader>sH",      function() Snacks.picker.highlights() end,                              desc = "Highlights" },
-    { "<leader>si",      function() Snacks.picker.icons() end,                                   desc = "Icons" },
-    { "<leader>sk",      function() Snacks.picker.keymaps() end,                                 desc = "Keymaps" },
-    { "<leader>sl",      function() Snacks.picker.loclist() end,                                 desc = "Location List" },
-    { "<leader>sm",      function() Snacks.picker.marks() end,                                   desc = "Marks" },
-    { "<leader>sM",      function() Snacks.picker.man() end,                                     desc = "Man Pages" },
+    { "<leader>sb", function() Snacks.picker.grep_buffers() end,                            desc = "Grep Open Buffers" },
+    { "<leader>sc", function() Snacks.picker.command_history() end,                         desc = "Command History" },
+    { "<leader>sd", function() Snacks.picker.diagnostics() end,                             desc = "Diagnostics" },
+    { "<leader>sH", function() Snacks.picker.highlights() end,                              desc = "Highlights" },
+    { "<leader>si", function() Snacks.picker.icons() end,                                   desc = "Icons" },
+    { "<leader>sk", function() Snacks.picker.keymaps() end,                                 desc = "Keymaps" },
+    { "<leader>sl", function() Snacks.picker.loclist() end,                                 desc = "Location List" },
+    { "<leader>sm", function() Snacks.picker.marks() end,                                   desc = "Marks" },
+    { "<leader>sM", function() Snacks.picker.man() end,                                     desc = "Man Pages" },
     -- LSP
-    { "gd",              function() Snacks.picker.lsp_definitions() end,                         desc = "Goto Definition" },
-    { "gD",              function() Snacks.picker.lsp_declarations() end,                        desc = "Goto Declaration" },
-    { "gr",              function() Snacks.picker.lsp_references() end,                          nowait = true,                     desc = "References" },
-    { "gI",              function() Snacks.picker.lsp_implementations() end,                     desc = "Goto Implementation" },
-    { "gy",              function() Snacks.picker.lsp_type_definitions() end,                    desc = "Goto T[y]pe Definition" },
-    { "<leader>ss",      function() Snacks.picker.lsp_symbols() end,                             desc = "LSP Symbols" },
-    { "<leader>sS",      function() Snacks.picker.lsp_workspace_symbols() end,                   desc = "LSP Workspace Symbols" },
+    { "gd",         function() Snacks.picker.lsp_definitions() end,                         desc = "Goto Definition" },
+    { "gD",         function() Snacks.picker.lsp_declarations() end,                        desc = "Goto Declaration" },
+    { "gr",         function() Snacks.picker.lsp_references() end,                          nowait = true,                     desc = "References" },
+    { "gI",         function() Snacks.picker.lsp_implementations() end,                     desc = "Goto Implementation" },
+    { "gy",         function() Snacks.picker.lsp_type_definitions() end,                    desc = "Goto T[y]pe Definition" },
+    { "<leader>ss", function() Snacks.picker.lsp_symbols() end,                             desc = "LSP Symbols" },
+    { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end,                   desc = "LSP Workspace Symbols" },
     -- git
-    { "<leader>gg",      function() Snacks.lazygit() end,                                        desc = "Lazygit" },
-    { "<leader>gl",      function() Snacks.lazygit.log_file() end,                               desc = "Lazygit" },
-    { "<leader>gL",      function() Snacks.picker.git_log_line() end,                               desc = "Lazygit" },
+    { "<leader>gg", function() Snacks.lazygit() end,                                        desc = "Lazygit" },
+    { "<leader>gl", function() Snacks.lazygit.log_file() end,                               desc = "Lazygit" },
+    { "<leader>gL", function() Snacks.picker.git_log_line() end,                            desc = "Lazygit" },
     -- Other
-    { "<leader>z",       function() Snacks.zen() end,                                            desc = "Toggle Zen Mode" },
-    { "<leader>x",      function() Snacks.bufdelete() end,                                      desc = "Delete Buffer" },
-    { "<leader>cR",      function() Snacks.rename.rename_file() end,                             desc = "Rename File" },
-    { "<leader>gB",      function() Snacks.gitbrowse() end,                                      desc = "Git Browse",               mode = { "n", "v" } },
-    { "<leader>un",      function() Snacks.notifier.hide() end,                                  desc = "Dismiss All Notifications" },
-    { "]]",              function() Snacks.words.jump(vim.v.count1) end,                         desc = "Next Reference",           mode = { "n", "t" } },
-    { "[[",              function() Snacks.words.jump(-vim.v.count1) end,                        desc = "Prev Reference",           mode = { "n", "t" } },
+    { "<leader>z",  function() Snacks.zen() end,                                            desc = "Toggle Zen Mode" },
+    { "<leader>x",  function() Snacks.bufdelete() end,                                      desc = "Delete Buffer" },
+    { "<leader>cR", function() Snacks.rename.rename_file() end,                             desc = "Rename File" },
+    { "<leader>gB", function() Snacks.gitbrowse() end,                                      desc = "Git Browse",               mode = { "n", "v" } },
+    { "<leader>un", function() Snacks.notifier.hide() end,                                  desc = "Dismiss All Notifications" },
+    { "]]",         function() Snacks.words.jump(vim.v.count1) end,                         desc = "Next Reference",           mode = { "n", "t" } },
+    { "[[",         function() Snacks.words.jump(-vim.v.count1) end,                        desc = "Prev Reference",           mode = { "n", "t" } },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
