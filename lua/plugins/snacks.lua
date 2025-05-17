@@ -5,7 +5,17 @@ return {
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
-    dashboard = { enabled = true },
+    dashboard = {
+      preset = {
+        header =[[
+██╗   ██╗███████╗ ██████╗ ██████╗ ██████╗ ███████╗
+██║   ██║██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔════╝
+██║   ██║███████╗██║     ██║   ██║██║  ██║█████╗  
+╚██╗ ██╔╝╚════██║██║     ██║   ██║██║  ██║██╔══╝  
+ ╚████╔╝ ███████║╚██████╗╚██████╔╝██████╔╝███████╗
+  ╚═══╝  ╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝]],
+      }
+    },
     --explorer = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
@@ -26,7 +36,7 @@ return {
     },
     quickfile = { enabled = true },
     scope = { enabled = true },
-    --scroll = { enabled = true },
+    scroll = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
     styles = {
@@ -34,6 +44,7 @@ return {
         -- wo = { wrap = true } -- Wrap notifications
       }
     },
+    image = {},
     zen = {
       -- You can add any `Snacks.toggle` id here.
       -- Toggle state is restored when the window is closed.
