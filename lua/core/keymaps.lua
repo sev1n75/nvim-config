@@ -15,7 +15,19 @@ keymap.set("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
 -- 取消高亮
 keymap.set("n", "<leader>nh", "<cmd>nohl<CR>")
 
-keymap.set("n", "<leader>x", "<cmd>bdelete<CR>")
+--keymap.set("n", "<leader>x", "<cmd>bdelete<CR>")
 
 -- clear jumplists
 keymap.set("n", "<leader>cl", "<cmd>clearjumps<CR>")
+
+keymap.set('n', '<leader>ut', '<cmd>lua ToggleTransparentBackground()<CR>')
+
+local transparent_background = true
+
+function ToggleTransparentBackground()
+  transparent_background = not transparent_background
+  require("catppuccin").setup {
+    transparent_background = transparent_background,
+  }
+  vim.cmd([[colorscheme catppuccin]])
+end

@@ -12,14 +12,20 @@ return {
     --'shaunsingh/nord.nvim',
     --"Mofiqul/dracula.nvim",
     --"rebelot/kanagawa.nvim",
-    "folke/tokyonight.nvim",
+    --"folke/tokyonight.nvim",
+    "catppuccin/nvim",
+    name = "catppuccin",
     lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
       --vim.cmd([[colorscheme nord]])
       --vim.cmd([[colorscheme dracula]])
-      vim.cmd([[colorscheme tokyonight]])
+      --vim.cmd([[colorscheme tokyonight]])
+      require("catppuccin").setup {
+        transparent_background = true,
+      }
+      vim.cmd([[colorscheme catppuccin]])
     end,
   },
 
@@ -46,36 +52,18 @@ return {
     "lewis6991/gitsigns.nvim", --左侧git提示
     config = function()
       require('gitsigns').setup {
-        signs = {
-          add = { text = '+' },
-          change = { text = '~' },
-          delete = { text = '_' },
-          topdelete = { text = '‾' },
-          changedelete = { text = '~' },
-        },
+        --signs = {
+        --  add = { text = '+' },
+        --  change = { text = '~' },
+        --  delete = { text = '_' },
+        --  topdelete = { text = '‾' },
+        --  changedelete = { text = '~' },
+        --},
+        current_line_blame = true,
+        numhl = false,
+        linehl = false,
       }
     end,
-  },
-
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      routes = {
-        {
-          filter = { event = "notify", find = "No information available" },
-          opts = { skip = true },
-        },
-      vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Message" })
-      },
-      presets = {
-        lsp_doc_border = true,
-      },
-    },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    },
   },
 
   {
@@ -117,6 +105,7 @@ return {
           markdown = { "mdformat" },
           python = { "isort", "black" },
           rust = { "rustfmt" },
+          latex = { "tex-fmt" },
         },
       })
 
@@ -128,17 +117,5 @@ return {
         })
       end, { desc = "Format file or range (in visual mode)" })
     end,
-  },
-  {
-    "folke/zen-mode.nvim",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-      vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "toggle zen-mode" }),
-      plugins = {
-        tmux = { enabled = true }, -- disables the tmux statusline
-      }
-    },
   },
 }

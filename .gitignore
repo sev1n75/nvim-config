@@ -1,3 +1,4 @@
 lazy-lock.json
 **/.DS_Store
 lua/plugins/neorg.lua
+lua/plugins/vimtex.lua
