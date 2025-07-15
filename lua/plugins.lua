@@ -1,13 +1,4 @@
 return {
-  -- theme
-  --{
-  --  "neanias/everforest-nvim",
-  --  -- Optional; default configuration will be d if setup isn't called.
-  --  config = function()
-  --    require("everforest").setup()
-  --  end,
-  --},
-
   {
     --'shaunsingh/nord.nvim',
     --"Mofiqul/dracula.nvim",
@@ -28,8 +19,6 @@ return {
       vim.cmd([[colorscheme catppuccin]])
     end,
   },
-
-  --{'nyoom-engineering/oxocarbon.nvim'},
 
   {
     'nvim-lualine/lualine.nvim',
@@ -83,9 +72,7 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    ---@type Flash.Config
     opts = {},
-    -- stylua: ignore
     keys = {
       { "<leader>d", mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
       { "<leader>D", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
