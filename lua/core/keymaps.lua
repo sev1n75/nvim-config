@@ -27,3 +27,5 @@ function ToggleTransparentBackground()
   }
   vim.cmd([[colorscheme catppuccin]])
 end
+
+keymap.set("n", "K", function() vim.lsp.buf.hover() end, { desc = "LSP Hover" })
