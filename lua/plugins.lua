@@ -127,4 +127,11 @@ return {
       end, { desc = "Format file or range (in visual mode)" })
     end,
   },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'folke/snacks.nvim', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
+  },
 }
