@@ -1,13 +1,4 @@
 return {
-  -- theme
-  --{
-  --  "neanias/everforest-nvim",
-  --  -- Optional; default configuration will be d if setup isn't called.
-  --  config = function()
-  --    require("everforest").setup()
-  --  end,
-  --},
-
   {
     --'shaunsingh/nord.nvim',
     --"Mofiqul/dracula.nvim",
@@ -24,22 +15,42 @@ return {
       --vim.cmd([[colorscheme tokyonight]])
       require("catppuccin").setup {
         transparent_background = true,
+        float = {
+          transparent = true,
+        },
       }
       vim.cmd([[colorscheme catppuccin]])
     end,
   },
 
-  --{'nyoom-engineering/oxocarbon.nvim'},
-
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
-    config = function()
-      require("lualine").setup({
-        options = {
-          -- ... other configuration
-          theme = "auto", -- Can also be "auto" to detect automatically.
-        }
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "folke/trouble.nvim",
+    },
+    opts = function(_, opts)
+      local trouble = require("trouble")
+
+      local symbols = trouble.statusline({
+        mode = "lsp_document_symbols",
+        groups = {},
+        title = false,
+        filter = { range = true },
+        format = "{kind_icon}{symbol.name:Normal}",
+        hl_group = "lualine_c_normal", -- 对应 section 的 highlight group
+      })
+
+      -- 你也可以保留原有 opts.sections.lualine_c 的其他内容
+      opts.options = opts.options or {}
+      opts.options.theme = "auto"
+
+      opts.sections = opts.sections or {}
+      opts.sections.lualine_c = opts.sections.lualine_c or {}
+
+      table.insert(opts.sections.lualine_c, {
+        symbols.get,
+        cond = symbols.has,
       })
     end,
   },
@@ -83,9 +94,7 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    ---@type Flash.Config
     opts = {},
-    -- stylua: ignore
     keys = {
       { "<leader>d", mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
       { "<leader>D", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
@@ -117,5 +126,12 @@ return {
         })
       end, { desc = "Format file or range (in visual mode)" })
     end,
+  },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'folke/snacks.nvim', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
   },
 }

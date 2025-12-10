@@ -32,8 +32,8 @@ opt.background = "dark" -- set this to dark or light
 ---- 其他
 -- 缩进
 opt.expandtab = true
-opt.tabstop = 2
-opt.shiftwidth = 2
+opt.tabstop = 4
+opt.shiftwidth = 4
 opt.autoindent = true
 
 -- 编辑
