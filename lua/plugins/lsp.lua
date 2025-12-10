@@ -37,7 +37,6 @@ return {
         ['<C-s>'] = { 'show_signature', 'hide_signature', 'fallback' },
       },
 
-    require("lspconfig").clangd.setup{},
       appearance = {
         nerd_font_variant = 'mono'
       },
