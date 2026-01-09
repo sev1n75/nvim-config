@@ -88,8 +88,8 @@ return {
     { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end,                   desc = "LSP Workspace Symbols" },
     -- git
     { "<leader>gg", function() Snacks.lazygit() end,                                        desc = "Lazygit" },
-    { "<leader>gl", function() Snacks.lazygit.log_file() end,                               desc = "Lazygit" },
-    { "<leader>gL", function() Snacks.picker.git_log_line() end,                            desc = "Lazygit" },
+    { "<leader>gl", function() Snacks.lazygit.log_file() end,                               desc = "git log for current file" },
+    { "<leader>gL", function() Snacks.picker.git_log_line() end,                            desc = "git log for current line" },
     -- Other
     { "<leader>z",  function() Snacks.zen() end,                                            desc = "Toggle Zen Mode" },
     { "<leader>x",  function() Snacks.bufdelete() end,                                      desc = "Delete Buffer" },
