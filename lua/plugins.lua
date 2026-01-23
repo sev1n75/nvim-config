@@ -77,6 +77,7 @@ return {
       vim.keymap.set("n", "<leader>gK", "<CMD>Gitsign preview_hunk<CR>", { desc = "preview hunk" })
       vim.keymap.set("n", "<leader>gk", "<CMD>Gitsign prev_hunk<CR>", { desc = "goto previous hunk" })
       vim.keymap.set("n", "<leader>gj", "<CMD>Gitsign next_hunk<CR>", { desc = "goto next hunk" })
+      vim.keymap.set("n", "<leader>gb", "<CMD>Gitsign blame_line<CR>", { desc = "blame current line" })
     end,
   },
 

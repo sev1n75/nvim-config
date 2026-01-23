@@ -57,9 +57,6 @@ return {
     }
   },
   keys = {
-    -- Top Pickers
-    { "<leader>:",  function() Snacks.picker.command_history() end,                         desc = "Command History" },
-    { "<leader>nH", function() Snacks.picker.notifications() end,                           desc = "Notification History" },
     -- find
     { "<leader>fb", function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
@@ -76,7 +73,7 @@ return {
     -- { "<leader>fp",      function() Snacks.picker.projects() end,                                desc = "Projects" },
     -- search
     { "<leader>sB", function() Snacks.picker.grep_buffers() end,                            desc = "Grep Open Buffers" },
-    { "<leader>sc", function() Snacks.picker.command_history() end,                         desc = "Command History" },
+    { "<leader>:", function() Snacks.picker.command_history() end,                          desc = "Command History" },
     { "<leader>sd", function() Snacks.picker.diagnostics() end,                             desc = "Diagnostics" },
     -- LSP
     { "gd",         function() Snacks.picker.lsp_definitions() end,                         desc = "Goto Definition" },
@@ -96,6 +93,7 @@ return {
     { "<leader>cR", function() Snacks.rename.rename_file() end,                             desc = "Rename File" },
     { "<leader>gB", function() Snacks.gitbrowse() end,                                      desc = "Git Browse",               mode = { "n", "v" } },
     { "<leader>un", function() Snacks.notifier.hide() end,                                  desc = "Dismiss All Notifications" },
+    { "<leader>nH", function() Snacks.notifier.show_history() end,                          desc = "Notification History" },
     { "]]",         function() Snacks.words.jump(vim.v.count1) end,                         desc = "Next Reference",           mode = { "n", "t" } },
     { "[[",         function() Snacks.words.jump(-vim.v.count1) end,                        desc = "Prev Reference",           mode = { "n", "t" } },
   },
